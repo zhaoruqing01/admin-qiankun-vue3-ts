@@ -13,7 +13,7 @@
       </li>
     </ul>
     <!-- container -->
-    <div id="micro-app-container" class="micro-app-container">
+    <div class="micro-app-container">
       <router-view />
     </div>
   </div>

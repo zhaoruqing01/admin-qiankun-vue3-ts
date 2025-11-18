@@ -50,6 +50,7 @@ setTimeout(() => {
   start({
     sandbox: {
       strictStyleIsolation: true, // 严格样式隔离（推荐，避免样式污染）
+      experimentalStyleIsolation: true, // 增强样式隔离
     },
   });
 }, 0);

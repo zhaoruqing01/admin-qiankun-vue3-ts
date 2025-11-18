@@ -1,4 +1,4 @@
 <template>
-  <div></div>
+  <div id="micro-app-container"></div>
 </template>
 <style scoped></style>

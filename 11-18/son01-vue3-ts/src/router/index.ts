@@ -1,21 +1,28 @@
+import { qiankunWindow } from 'vite-plugin-qiankun/dist/helper';
 import { createRouter, createWebHistory } from 'vue-router';
 
-// 在qiankun环境下，需要设置basename
+const base = qiankunWindow.__POWERED_BY_QIANKUN__ ? '/son01-vue3-ts' : '/';
+
 const router = createRouter({
-  history: createWebHistory(window.__POWERED_BY_QIANKUN__ ? '/son01-vue3-ts' : '/'),
+  history: createWebHistory(base),
   routes: [
     {
       path: '/',
-      name: 'home',
+      name: 'Home',
       component: () => import('../components/Home.vue'),
+      meta: {
+        title: '首页',
+      },
     },
     {
       path: '/about',
-      name: 'about',
+      name: 'About',
       component: () => import('../components/About.vue'),
+      meta: {
+        title: '关于',
+      },
     },
   ],
 });
 
-// 暴露路由实例供主应用使用
 export default router;

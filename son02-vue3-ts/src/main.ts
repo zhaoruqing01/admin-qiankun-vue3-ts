@@ -2,7 +2,6 @@
 
 import { createApp } from 'vue';
 import App from './App.vue';
-import router from './router';
 import './style.css';
 
 // 1. 动态设置publicPath(解决子应用静态资源路径问题)
@@ -12,7 +11,6 @@ if (window.__POWERED_BY_QIANKUN__) {
 }
 
 let app: any = null;
-let router_instance: any = null;
 let mountedContainer: any = null; // 保存挂载容器引用
 
 // 2. 创建vue实例函数
@@ -37,13 +35,6 @@ const createVueApp = (container: HTMLElement | string | any) => {
   }
 
   app = createApp(App);
-
-  // 为每个应用实例创建独立的路由实例（在qiankun环境中）
-  if (window.__POWERED_BY_QIANKUN__ && !router_instance) {
-    router_instance = router;
-  }
-
-  app.use(router_instance || router);
 
   // 判断是否有container，有则挂载到主应用的container上，没有则挂载到自己的#app上
   if (typeof container === 'string') {
@@ -80,24 +71,23 @@ const createVueApp = (container: HTMLElement | string | any) => {
 if (!window.__POWERED_BY_QIANKUN__) {
   createVueApp('#app');
 }
-// 3. 暴露三个生命周期钩子给qiankun
 
-// 3.1 第一次初始化时调用 - bootstrap
-export async function bootstrap() {
-  console.log('bootstrap');
-}
+// 4. 暴露三个生命周期针騩给qiankun
 
-// 3.2 每次应用激活时调用 - mount
-export async function mount(props: any) {
-  console.log('mount');
-  console.log(`主应用传递的数据为${JSON.stringify(props)},原始数据为${props}`);
+// 4.1 第一次初始化时调用 - bootstrap
+export const bootstrap = () => {
+  console.log('son02 bootstrap');
+};
 
+// 4.2 每次应用激活时调用 - mount
+export const mount = (props: any) => {
+  console.log('son02 mount');
   createVueApp(props.container);
-}
+};
 
-// 3.3 卸载时调用 - unmount
-export async function unmount() {
-  console.log('unmount');
+// 4.3 卸载时调用 - unmount
+export const unmount = () => {
+  console.log('son02 unmount');
   if (app) {
     try {
       app.unmount();
@@ -106,4 +96,4 @@ export async function unmount() {
     }
     app = null;
   }
-}
+};
