@@ -1,0 +1,26 @@
+{
+  "name": "son01-vue3-ts",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vue-tsc -b && vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "sass": "^1.94.0",
+    "vite-plugin-qiankun": "^1.0.15",
+    "vue": "^3.5.24",
+    "vue-router": "^4.6.3"
+  },
+  "devDependencies": {
+    "@types/node": "^24.10.0",
+    "@vitejs/plugin-vue": "^6.0.1",
+    "@vue/tsconfig": "^0.8.1",
+    "terser": "^5.44.1",
+    "typescript": "~5.9.3",
+    "vite": "^7.2.2",
+    "vue-tsc": "^3.1.3"
+  }
+}
